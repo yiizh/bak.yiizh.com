@@ -1,0 +1,29 @@
+* {
+  font-family: '微软雅黑', "Open San";
+  font-size: 14px;
+  color: #444444;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: '微软雅黑', "Open San";
+}
+.panel-default .panel-heading {
+  background: transparent;
+}
+.panel-default .panel-title {
+  font-weight: bold;
+}
+.main-header .navbar {
+  margin-left: 0;
+}
+.main-header .navbar-brand {
+  padding: 10px 15px;
+}
+.content-wrapper {
+  margin-left: 0;
+  padding-top: 30px;
+}

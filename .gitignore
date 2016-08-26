@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+.idea/
+
+# Vagrant configures
+.vagrant/
+
+# Vendor
+vendor/
