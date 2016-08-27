@@ -10,6 +10,7 @@ namespace frontend\controllers;
 
 use frontend\components\FrontendController;
 use yii\web\ErrorAction;
+use yii\web\Response;
 
 class SiteController extends FrontendController
 {
@@ -22,8 +23,26 @@ class SiteController extends FrontendController
         ];
     }
 
+    public function verbs()
+    {
+        return [
+            'logout' => ['post']
+        ];
+    }
+
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * 退出登录
+     *
+     * @return Response
+     */
+    public function actionLogout()
+    {
+        \Yii::$app->user->logout();
+        return $this->redirect(\Yii::$app->homeUrl);
     }
 }
