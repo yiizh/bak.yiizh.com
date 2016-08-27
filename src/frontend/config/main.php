@@ -62,6 +62,52 @@ if (YII_ENV == 'dev') {
             '*',
         ]
     ];
+
+    $config['bootstrap'][] = 'gii';
+    $config['modules']['gii'] = [
+        'class' => 'yii\gii\Module',
+        'allowedIPs' => [
+            '*',
+        ],
+        'generators' => [
+            'model' => [
+                'class' => 'yii\gii\generators\model\Generator',
+                'templates' => [
+                    'yiizh' => '@common/gii/model',
+                ]
+            ],
+            'crud' => [
+                'class' => 'yii\gii\generators\crud\Generator',
+                'templates' => [
+                    'yiizh' => '@common/gii/crud',
+                ]
+            ],
+            'controller' => [
+                'class' => 'yii\gii\generators\controller\Generator',
+                'templates' => [
+                    'yiizh' => '@common/gii/controller',
+                ]
+            ],
+            'form' => [
+                'class' => 'yii\gii\generators\form\Generator',
+                'templates' => [
+                    'yiizh' => '@common/gii/form',
+                ]
+            ],
+            'module' => [
+                'class' => 'yii\gii\generators\module\Generator',
+                'templates' => [
+                    'yiizh' => '@common/gii/module',
+                ]
+            ],
+            'extension' => [
+                'class' => 'yii\gii\generators\extension\Generator',
+                'templates' => [
+                    'yiizh' => '@common/gii/extension',
+                ]
+            ],
+        ]
+    ];
 }
 
 return $config;

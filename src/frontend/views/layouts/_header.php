@@ -5,11 +5,13 @@
  * @license http://www.yiizh.com/license/
  */
 
+use common\models\User;
 use yii\bootstrap\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 
 /**
+ * @var $identity User
  */
 $user = Yii::$app->user;
 
@@ -23,7 +25,9 @@ if ($user->isGuest) {
     $rightNavItems[] = ['label' => '登录', 'url' => ['/login/index']];
     $rightNavItems[] = ['label' => '注册', 'url' => ['/register/index']];
 } else {
-    $rightNavItems[] = ['label' => '退出', 'url' => ['/site/logout'], ['data' => ['method' => 'post']]];
+    $identity = Yii::$app->user->getIdentity();
+    $rightNavItems[] = ['label' => $identity->name, 'url' => ['/center/index']];
+    $rightNavItems[] = ['label' => '退出', 'url' => ['/site/logout'], 'linkOptions' => ['data' => ['method' => 'post']]];
 }
 
 ?>

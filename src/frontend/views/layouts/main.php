@@ -7,10 +7,8 @@
 
 use common\widgets\Alert;
 use common\widgets\LoginPanel;
-use common\widgets\Panel;
 use yii\bootstrap\Modal;
 use yii\web\View;
-use yii\widgets\Breadcrumbs;
 
 /**
  * @var $this View
@@ -28,15 +26,7 @@ $this->beginContent('@frontend/views/layouts/blank.php');
             <section class="content">
                 <div class="container">
                     <?= Alert::widget() ?>
-                    <div class="row">
-                        <div class="col-xs-3"></div>
-                        <div class="col-xs-6">
-                            <?= $content ?>
-                        </div>
-                        <div class="col-xs-3">
-                            <?= LoginPanel::widget()?>
-                        </div>
-                    </div>
+                    <?= $content ?>
                 </div>
             </section>
         </div>
