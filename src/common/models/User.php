@@ -16,10 +16,21 @@ class User extends BaseUser implements IdentityInterface
     const STATUS_ACTIVE = 100;
     const STATUS_LOCKED = 0;
 
+    const SCENARIO_PROFILE = 'profile';
+
     public static $statusItems = [
         self::STATUS_ACTIVE => '激活',
         self::STATUS_LOCKED => '锁定'
     ];
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+
+        $scenarios[self::SCENARIO_PROFILE] = ['name', 'updatedAt'];
+
+        return $scenarios;
+    }
 
     /**
      * @inheritDoc
@@ -148,5 +159,18 @@ class User extends BaseUser implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->passwordResetToken = null;
+    }
+
+    /**
+     * 保存个人资料
+     *
+     * @return bool
+     */
+    public function saveProfile()
+    {
+        if (!$this->save()) {
+            return false;
+        }
+        return true;
     }
 }

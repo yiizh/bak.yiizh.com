@@ -8,6 +8,7 @@
 namespace frontend\components;
 
 
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 
@@ -19,11 +20,20 @@ class FrontendController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => $this->verbs()
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => $this->accessRules()
             ]
         ];
     }
 
     public function verbs()
+    {
+        return [];
+    }
+
+    public function accessRules()
     {
         return [];
     }

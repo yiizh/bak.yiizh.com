@@ -23,7 +23,7 @@ use Yii;
  * @property integer $createdAt
  * @property integer $updatedAt
  */
-class BaseUser extends \yii\db\ActiveRecord
+class BaseUser extends BaseActiveRecord
 {
     /**
      * @inheritdoc

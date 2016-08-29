@@ -26,7 +26,7 @@ if ($user->isGuest) {
     $rightNavItems[] = ['label' => '注册', 'url' => ['/register/index']];
 } else {
     $identity = Yii::$app->user->getIdentity();
-    $rightNavItems[] = ['label' => '<i class="fa fa-fw fa-user"></i> '.$identity->name, 'url' => ['/center/index']];
+    $rightNavItems[] = ['label' => '<i class="fa fa-fw fa-user"></i> '.$identity->name, 'url' => ['/account/profile']];
     $rightNavItems[] = ['label' => '退出', 'url' => ['/site/logout'], 'linkOptions' => ['data' => ['method' => 'post']]];
 }
 
