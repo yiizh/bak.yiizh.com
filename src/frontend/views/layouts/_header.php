@@ -26,7 +26,7 @@ if ($user->isGuest) {
     $rightNavItems[] = ['label' => '注册', 'url' => ['/register/index']];
 } else {
     $identity = Yii::$app->user->getIdentity();
-    $rightNavItems[] = ['label' => $identity->name, 'url' => ['/center/index']];
+    $rightNavItems[] = ['label' => '<i class="fa fa-fw fa-user"></i> '.$identity->name, 'url' => ['/center/index']];
     $rightNavItems[] = ['label' => '退出', 'url' => ['/site/logout'], 'linkOptions' => ['data' => ['method' => 'post']]];
 }
 
@@ -34,7 +34,7 @@ if ($user->isGuest) {
 <header class="main-header">
     <?php NavBar::begin([
         'options' => [
-            'class' => 'navbar navbar-static-top'
+            'class' => 'navbar navbar-inverse navbar-static-top'
         ],
         'brandLabel' => Html::img('@web/static/images/brand-logo.png')
     ]); ?>
