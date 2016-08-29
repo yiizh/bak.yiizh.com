@@ -10,7 +10,9 @@ namespace frontend\controllers;
 
 use common\auth\AuthHandler;
 use frontend\components\FrontendController;
+use yii\authclient\AuthAction;
 use yii\authclient\ClientInterface;
+use yii\captcha\CaptchaAction;
 use yii\web\ErrorAction;
 use yii\web\Response;
 
@@ -23,8 +25,12 @@ class SiteController extends FrontendController
                 'class' => ErrorAction::className(),
             ],
             'auth' => [
-                'class' => 'yii\authclient\AuthAction',
+                'class' => AuthAction::className(),
                 'successCallback' => [$this, 'onAuthSuccess'],
+            ],
+            'captcha' => [
+                'class' => CaptchaAction::className(),
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
     }

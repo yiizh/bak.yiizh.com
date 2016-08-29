@@ -1,11 +1,8 @@
 <?php
 /**
- * @author Alex Zhang <alex@extong.net>
- */
-/**
- * @link http://honeycomb.yiizh.com/
+ * @link http://www.yiizh.com/
  * @copyright Copyright (c) 2016 yiizh.com
- * @license http://honeycomb.yiizh.com/license/
+ * @license http://www.yiizh.com/license/
  */
 
 
