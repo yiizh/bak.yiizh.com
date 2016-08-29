@@ -30,3 +30,6 @@ h6 {
 .navbar-toggle .icon-bar {
   background: #FFFFFF;
 }
+.auth-icon.weibo {
+  background: url(../images/weibo.png);
+}

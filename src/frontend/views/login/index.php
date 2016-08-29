@@ -5,6 +5,7 @@
  * @license http://www.yiizh.com/license/
  */
 use frontend\forms\LoginForm;
+use yii\authclient\widgets\AuthChoice;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\web\View;
@@ -44,6 +45,10 @@ $this->title = '登录';
                     </p>
                     <?php ActiveForm::end() ?>
 
+                    <?= AuthChoice::widget([
+                        'baseAuthUrl' => ['site/auth'],
+                        'popupMode' => false,
+                    ]) ?>
                 </div>
             </div>
         </div>

@@ -8,7 +8,9 @@
 namespace frontend\controllers;
 
 
+use common\auth\AuthHandler;
 use frontend\components\FrontendController;
+use yii\authclient\ClientInterface;
 use yii\web\ErrorAction;
 use yii\web\Response;
 
@@ -19,7 +21,11 @@ class SiteController extends FrontendController
         return [
             'error' => [
                 'class' => ErrorAction::className(),
-            ]
+            ],
+            'auth' => [
+                'class' => 'yii\authclient\AuthAction',
+                'successCallback' => [$this, 'onAuthSuccess'],
+            ],
         ];
     }
 
@@ -28,6 +34,14 @@ class SiteController extends FrontendController
         return [
             'logout' => ['post']
         ];
+    }
+
+    /**
+     * @param ClientInterface $client
+     */
+    public function onAuthSuccess($client)
+    {
+        (new AuthHandler($client))->handle();
     }
 
     public function actionIndex()
