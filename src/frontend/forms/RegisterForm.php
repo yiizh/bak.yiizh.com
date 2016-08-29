@@ -9,6 +9,7 @@
 namespace frontend\forms;
 
 
+use common\helpers\DateHelper;
 use common\models\User;
 use yii\base\Model;
 
@@ -38,7 +39,7 @@ class RegisterForm extends Model
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
 
-            ['verifyCode','captcha'],
+            ['verifyCode', 'captcha'],
         ];
     }
 
@@ -66,6 +67,7 @@ class RegisterForm extends Model
         $user = new User();
         $user->name = $this->name;
         $user->email = $this->email;
+        $user->registerDatetime = DateHelper::now();
         $user->setPassword($this->password);
         $user->generateAuthKey();
 

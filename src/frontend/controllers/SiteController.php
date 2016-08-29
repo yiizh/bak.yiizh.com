@@ -18,6 +18,16 @@ use yii\web\Response;
 
 class SiteController extends FrontendController
 {
+    public function accessRules()
+    {
+        return [
+            [
+                'allow' => true,
+                'roles' => ['?', '@']
+            ]
+        ];
+    }
+
     public function actions()
     {
         return [

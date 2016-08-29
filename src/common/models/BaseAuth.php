@@ -12,7 +12,7 @@ use Yii;
  * @property string $source
  * @property string $sourceId
  */
-class BaseAuth extends \yii\db\ActiveRecord
+class BaseAuth extends BaseActiveRecord
 {
     /**
      * @inheritdoc

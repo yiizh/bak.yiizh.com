@@ -14,8 +14,22 @@ use Yii;
 
 class RegisterController extends FrontendController
 {
+    public function accessRules()
+    {
+        return [
+            [
+                'allow' => true,
+                'roles' => ['?', '@']
+            ]
+        ];
+    }
+
     public function actionIndex()
     {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $model = new RegisterForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->register()) {
