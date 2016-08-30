@@ -33,14 +33,7 @@ $this->beginContent('@frontend/views/layouts/main.php');
             </div>
         </div>
         <div class="col-xs-9">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><?= $this->title ?></h3>
-                </div>
-                <div class="panel-body">
-                    <?= $content ?>
-                </div>
-            </div>
+            <?= $content ?>
         </div>
     </div>
 <?php $this->endContent(); ?>

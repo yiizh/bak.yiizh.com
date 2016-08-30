@@ -17,6 +17,7 @@ class User extends BaseUser implements IdentityInterface
     const STATUS_LOCKED = 0;
 
     const SCENARIO_PROFILE = 'profile';
+    const SCENARIO_PASSWORD = 'password';
 
     public static $statusItems = [
         self::STATUS_ACTIVE => '激活',
@@ -28,6 +29,7 @@ class User extends BaseUser implements IdentityInterface
         $scenarios = parent::scenarios();
 
         $scenarios[self::SCENARIO_PROFILE] = ['name', 'updatedAt'];
+        $scenarios[self::SCENARIO_PASSWORD] = ['passwordHash'];
 
         return $scenarios;
     }
@@ -167,6 +169,19 @@ class User extends BaseUser implements IdentityInterface
      * @return bool
      */
     public function saveProfile()
+    {
+        if (!$this->save()) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 修改密码
+     *
+     * @return bool
+     */
+    public function changePassword()
     {
         if (!$this->save()) {
             return false;
