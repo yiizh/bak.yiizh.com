@@ -33,6 +33,15 @@ class News extends BaseNews
         return $scenarios;
     }
 
+    public function rules()
+    {
+        $rules = parent::rules();
+
+        $rules[] = ['link', 'url'];
+
+        return $rules;
+    }
+
     /**
      * @return string
      */

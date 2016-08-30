@@ -52,21 +52,6 @@ $formatter = Yii::$app->formatter;
             <?php Panel::end() ?>
         </div>
         <div class="col-xs-3">
-            <?php if (Yii::$app->user->can('manageNews')): ?>
-                <?php Panel::begin([
-                    'title' => '操作'
-                ]) ?>
-                <p>
-                    <?= Html::a('<i class="fa fa-fw fa-pencil"></i> 修改', ['update', 'id' => $model->id], ['class' => 'btn btn-block btn-primary']) ?>
-                </p>
-                <p>
-                    <?= Html::a('<i class="fa fa-fw fa-trash"></i> 删除', ['delete', 'id' => $model->id], ['class' => 'btn btn-block btn-danger', 'data' => [
-                        'confirm' => '确定删除？',
-                        'method' => 'post'
-                    ]]) ?>
-                </p>
-                <?php Panel::end() ?>
-            <?php endif; ?>
             <div class="well">
                 <p>好文章，要分享。</p>
                 <p>
