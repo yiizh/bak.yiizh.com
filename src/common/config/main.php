@@ -12,6 +12,9 @@ return [
     'timeZone' => 'Asia/Shanghai',
     'vendorPath' => APP_ROOT . '/vendor',
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
