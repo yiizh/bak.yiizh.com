@@ -18,8 +18,13 @@ $config = [
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'urlManager' => [
-            'enablePrettyUrl' => false,
+            'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'rules' => [
+                '/<controller:[\w-]+>' => '/<controller>/index',
+                '/<controller:[\w-]+>/<id:\d+>' => '/<controller>/view',
+                '/<controller:[\w-]+>/<action:[\w-]+>' => '/<controller>/<action>',
+            ]
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
