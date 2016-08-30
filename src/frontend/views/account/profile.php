@@ -6,6 +6,7 @@
  */
 
 use common\models\User;
+use common\widgets\Panel;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\web\View;
@@ -18,6 +19,9 @@ use yii\web\View;
 $this->title = '个人资料';
 ?>
 <div class="account-profile">
+    <?php Panel::begin([
+        'title' => $this->title
+    ]) ?>
     <div class="row">
         <div class="col-xs-9">
             <?php $form = ActiveForm::begin() ?>
@@ -31,4 +35,5 @@ $this->title = '个人资料';
             <?php ActiveForm::end() ?>
         </div>
     </div>
+    <?php Panel::end() ?>
 </div>
