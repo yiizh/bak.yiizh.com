@@ -11,8 +11,7 @@
         "yiisoft/yii2-authclient": "*",
         "yii2tech/sitemap": "*",
         "yiizh/yii2-adminlte": "*",
-        "yiizh/yii2-fontawesome": "*",
-        "cebe/yii2-gravatar": "*"
+        "yiizh/yii2-fontawesome": "*"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "*",
