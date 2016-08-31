@@ -5,7 +5,6 @@
  * @license http://www.yiizh.com/license/
  */
 
-use cebe\gravatar\Gravatar;
 use common\models\News;
 use common\models\User;
 use yii\helpers\Html;
@@ -22,13 +21,7 @@ $formatter = Yii::$app->formatter;
 ?>
 <div class="row news-item">
     <div class="col-xs-2 text-right">
-            <?= Gravatar::widget([
-                'email' => $user->email,
-                'options' => [
-                    'alt' => $user->name,
-                ],
-                'size' => 60
-            ]) ?>
+        <img src="<?= $user->getAvatarUrl() ?>" class="img-thumbnail">
     </div>
     <div class="col-xs-10">
         <div class="news-item-info"><?= $user->name ?></div>

@@ -26,6 +26,19 @@ $this->title = '个人资料';
         <div class="col-xs-9">
             <?php $form = ActiveForm::begin() ?>
 
+            <div class="form-group">
+                <label>头像</label>
+                <div class="media">
+                    <div class="media-left">
+                        <?= Html::img($model->getAvatarUrl(), ['width' => 90]) ?>
+                    </div>
+                    <div class="media-body">
+                        <p><?= Html::a('上传头像', '', ['class' => 'btn btn-success']) ?></p>
+                    </div>
+                </div>
+
+            </div>
+
             <?= $form->field($model, 'name')->textInput() ?>
 
             <div class="form-group">

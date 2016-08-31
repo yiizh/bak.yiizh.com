@@ -9,6 +9,7 @@ namespace common\models;
 
 use Yii;
 use yii\base\NotSupportedException;
+use yii\helpers\Url;
 use yii\web\IdentityInterface;
 
 class User extends BaseUser implements IdentityInterface
@@ -187,5 +188,19 @@ class User extends BaseUser implements IdentityInterface
             return false;
         }
         return true;
+    }
+
+    /**
+     * 头像地址
+     *
+     * @return string
+     */
+    public function getAvatarUrl()
+    {
+        if ($this->avatar == null) {
+            return Url::to('@web/static/images/default-avatar.jpg');
+        } else {
+            return Url::to('@web/uploads/' . $this->avatar);
+        }
     }
 }
