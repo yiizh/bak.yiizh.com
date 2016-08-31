@@ -11,9 +11,9 @@ RUN cd /app && \
 
 RUN chmod -R 777 /app/src/frontend/runtime \
     /app/src/frontend/web/assets \
-    /app/src/console/runtime
+    /app/src/frontend/web/uploads \
+    /app/src/console/runtime \
 
-RUN rm -rf /var/www/html && \
-    ln -s /app/src/frontend/web /var/www/html
+RUN sed -i "s/\/var\/www\/html/\/app\/src\/frontend\/web/g"  /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /app
