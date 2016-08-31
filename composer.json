@@ -12,7 +12,8 @@
         "yii2tech/sitemap": "*",
         "yiizh/yii2-adminlte": "*",
         "yiizh/yii2-fontawesome": "*",
-        "cebe/yii2-gravatar": "*"
+        "cebe/yii2-gravatar": "*",
+        "vlucas/phpdotenv": "*"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "*",
