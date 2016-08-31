@@ -4,27 +4,16 @@ services: docker
 install:
   - git clone https://github.com/yiizh/yiizh.com.git ~/yiizh.com
 
-before_script:
-  - if [ "$TRAVIS_TAG" != "" ]; then \
-        image_version = "$TRAVIS_TAG" \
-        push_image = 'yes' \
-    elif [ "$TRAVIS_BRANCH" = "master" ]; then \
-        image_version = "latest" \
-        push_image = 'yes' \
-    else \
-        image_version = "latest" \
-        push_image = 'no' \
-    fi
 script:
-  - docker build -t "yiizh/yiizh.com:$image_version" .
+  - docker build -t yiizh/yiizh.com .
 
 after_script:
   - docker images
 
 after_success:
-  - if [ "$push_image" = "yes" ] then
-        docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-        docker push yiizh/yiizh.com:$image_version;
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push USER/REPO;
     fi
 
 # vim:set et ts=2 sw=2:
