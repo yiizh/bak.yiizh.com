@@ -13,7 +13,6 @@ use frontend\components\FrontendController;
 use yii\authclient\AuthAction;
 use yii\authclient\ClientInterface;
 use yii\captcha\CaptchaAction;
-use yii\helpers\Url;
 use yii\web\ErrorAction;
 use yii\web\Response;
 
@@ -38,7 +37,6 @@ class SiteController extends FrontendController
             'auth' => [
                 'class' => AuthAction::className(),
                 'successCallback' => [$this, 'onAuthSuccess'],
-                'successUrl' => Url::to(['/openid/index'])
             ],
             'captcha' => [
                 'class' => CaptchaAction::className(),

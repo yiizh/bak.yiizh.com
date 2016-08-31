@@ -8,6 +8,7 @@
 
 namespace frontend\controllers;
 
+use common\widgets\Alert;
 use frontend\components\FrontendController;
 use frontend\forms\RegisterForm;
 use Yii;
@@ -33,6 +34,7 @@ class RegisterController extends FrontendController
         $model = new RegisterForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->register()) {
+                Alert::set('success', '注册成功.');
                 if (Yii::$app->getUser()->login($user)) {
                     if ($authclient != null) {
                         return $this->redirect(['/site/auth', 'authclient' => $authclient]);
@@ -44,7 +46,7 @@ class RegisterController extends FrontendController
 
         return $this->render('index', [
             'model' => $model,
-            'authclient'=>$authclient
+            'authclient' => $authclient
         ]);
     }
 }
