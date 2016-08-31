@@ -14,6 +14,9 @@ RUN chmod -R 777 /app/src/frontend/runtime \
     /app/src/frontend/web/uploads \
     /app/src/console/runtime
 
+RUN sed -i "s/'YII_DEBUG', true/'YII_DEBUG', false/g" /app/src/frontend/web/index.php && \
+    sed -i "s/'YII_ENV', 'dev'/'YII_ENV', 'prod'/g" /app/src/frontend/web/index.php
+
 RUN sed -i "s/\/var\/www\/html/\/app\/src\/frontend\/web/g"  /etc/apache2/sites-available/000-default.conf
 
 WORKDIR /app
