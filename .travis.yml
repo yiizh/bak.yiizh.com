@@ -5,15 +5,15 @@ install:
   - git clone https://github.com/yiizh/yiizh.com.git ~/yiizh.com
 
 before_script:
-  - if [ "$TRAVIS_TAG" != "" ] then
-        image_version = "$TRAVIS_TAG"
-        push_image = 'yes'
-    elif [ "$TRAVIS_BRANCH" = "master" ] then
-        image_version = "latest"
-        push_image = 'yes'
-    else
-        image_version = "latest"
-        push_image = 'no'
+  - if [ "$TRAVIS_TAG" != "" ]; then \
+        image_version = "$TRAVIS_TAG" \
+        push_image = 'yes' \
+    elif [ "$TRAVIS_BRANCH" = "master" ]; then \
+        image_version = "latest" \
+        push_image = 'yes' \
+    else \
+        image_version = "latest" \
+        push_image = 'no' \
     fi
 script:
   - docker build -t "yiizh/yiizh.com:$image_version" .
