@@ -10,6 +10,7 @@ namespace common\models;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\helpers\Url;
+use yii\log\Logger;
 use yii\web\IdentityInterface;
 
 class User extends BaseUser implements IdentityInterface
@@ -201,6 +202,45 @@ class User extends BaseUser implements IdentityInterface
             return Url::to('@web/static/images/default-avatar.jpg');
         } else {
             return Url::to('@web' . $this->avatar);
+        }
+    }
+
+    /**
+     * @param string $authclient
+     * @return bool
+     */
+    public function hasBind($authclient)
+    {
+        return Auth::find()
+            ->andWhere(['source' => $authclient, 'userId' => $this->id])
+            ->exists();
+    }
+
+    /**
+     * 取消绑定第三方帐号
+     *
+     * @param string $authclient
+     * @return bool
+     */
+    public function unbind($authclient)
+    {
+        $tr = self::getDb()->beginTransaction();
+
+        try {
+            Auth::deleteAll(['source' => $authclient, 'userId' => $this->id]);
+            if ($this->hasAttribute($authclient)) {
+                $this->$authclient = null;
+                if (!$this->save()) {
+                    $tr->rollBack();
+                    return false;
+                }
+            }
+            $tr->commit();
+            return true;
+        } catch (\Exception $e) {
+            Yii::getLogger()->log($e->getMessage(), Logger::LEVEL_ERROR);
+            $tr->rollBack();
+            return false;
         }
     }
 }

@@ -23,18 +23,26 @@ class LoginController extends FrontendController
         ];
     }
 
-    public function actionIndex()
+    /**
+     * @param string|null $authclient
+     * @return string|\yii\web\Response
+     */
+    public function actionIndex($authclient = null)
     {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-        
+
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            if ($authclient != null) {
+                return $this->redirect(['/site/auth', 'authclient' => $authclient]);
+            }
             return $this->goBack();
         } else {
             return $this->render('index', [
                 'model' => $model,
+                'authclient' => $authclient
             ]);
         }
     }

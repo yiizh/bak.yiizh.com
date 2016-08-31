@@ -14,6 +14,7 @@ use yii\web\View;
 /**
  * @var $this View
  * @var RegisterForm $model
+ * @var string|null $authclient
  */
 $this->title = '注册';
 ?>
@@ -42,7 +43,7 @@ $this->title = '注册';
                     </div>
 
                     <p>
-                        已有帐号？ <?=Html::a('立即登录',Yii::$app->user->loginUrl)?>
+                        已有帐号？ <?= Html::a('立即登录', $authclient == null ? ['/login/index'] : ['/login/index', 'authclient' => $authclient]) ?>
                     </p>
                     <?php ActiveForm::end(); ?>
                 </div>

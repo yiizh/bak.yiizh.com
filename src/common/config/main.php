@@ -38,7 +38,7 @@ return [
             'clients' => [
                 'weibo' => [
                     'class' => Weibo::className(),
-                    'title' => '使用微博登录',
+                    'title' => '新浪微博',
                     'clientId' => getenv('WEIBO_CLIENT_ID'),
                     'clientSecret' => getenv('WEIBO_CLIENT_SECRET'),
                 ],

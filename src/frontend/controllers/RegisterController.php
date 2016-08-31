@@ -24,7 +24,7 @@ class RegisterController extends FrontendController
         ];
     }
 
-    public function actionIndex()
+    public function actionIndex($authclient = null)
     {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
@@ -34,6 +34,9 @@ class RegisterController extends FrontendController
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->register()) {
                 if (Yii::$app->getUser()->login($user)) {
+                    if ($authclient != null) {
+                        return $this->redirect(['/site/auth', 'authclient' => $authclient]);
+                    }
                     return $this->goHome();
                 }
             }
@@ -41,6 +44,7 @@ class RegisterController extends FrontendController
 
         return $this->render('index', [
             'model' => $model,
+            'authclient'=>$authclient
         ]);
     }
 }
