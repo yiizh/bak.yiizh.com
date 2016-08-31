@@ -9,9 +9,9 @@ RUN cd /app && \
     composer global require "fxp/composer-asset-plugin:~1.1.1" && \
     composer install -vvv --prefer-dist
 
-RUN chmod -R /app/src/frontend/runtime \
-    /app/src/console/web/assets \
-    /app/src/frontend/runtime
+RUN chmod -R 777 /app/src/frontend/runtime \
+    /app/src/frontend/web/assets \
+    /app/src/console/runtime
 
 RUN rm -rf /var/www/html && \
     ln -s /app/src/frontend/web /var/www/html
