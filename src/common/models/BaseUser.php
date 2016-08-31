@@ -23,6 +23,7 @@ use Yii;
  * @property integer $createdAt
  * @property integer $updatedAt
  * @property string $avatar
+ * @property string $weibo
  */
 class BaseUser extends \common\models\BaseActiveRecord
 {
@@ -44,7 +45,7 @@ class BaseUser extends \common\models\BaseActiveRecord
             [['status', 'createdAt', 'updatedAt'], 'integer'],
             [['registerDatetime'], 'safe'],
             [['name'], 'string', 'max' => 50],
-            [['email', 'authKey'], 'string', 'max' => 100],
+            [['email', 'authKey', 'weibo'], 'string', 'max' => 100],
             [['passwordHash', 'passwordResetToken', 'avatar'], 'string', 'max' => 200],
             [['email'], 'unique'],
             [['passwordResetToken'], 'unique'],
@@ -68,6 +69,7 @@ class BaseUser extends \common\models\BaseActiveRecord
             'createdAt' => '创建时间',
             'updatedAt' => '更新时间',
             'avatar' => '头像地址',
+            'weibo' => '绑定的微博账号',
         ];
     }
 }

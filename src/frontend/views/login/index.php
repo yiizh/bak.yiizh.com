@@ -4,6 +4,7 @@
  * @copyright Copyright (c) 2016 yiizh.com
  * @license http://www.yiizh.com/license/
  */
+
 use frontend\forms\LoginForm;
 use yii\authclient\widgets\AuthChoice;
 use yii\bootstrap\ActiveForm;
@@ -13,6 +14,7 @@ use yii\web\View;
 /**
  * @var $this View
  * @var $model LoginForm
+ * @var string $authclient
  */
 
 $this->title = '登录';
@@ -41,7 +43,7 @@ $this->title = '登录';
                     </div>
 
                     <p>
-                        还没有帐号？<?= Html::a('立即注册', ['/register/index']) ?>
+                        还没有帐号？<?= Html::a('立即注册', $authclient == null ? ['/register/index'] : ['/register/index', 'authclient' => $authclient]) ?>
                     </p>
                     <?php ActiveForm::end() ?>
 

@@ -28,6 +28,7 @@ $this->beginContent('@frontend/views/layouts/main.php');
                     'items' => [
                         ['label' => '个人资料', 'url' => ['/account/profile']],
                         ['label' => '修改密码', 'url' => ['/account/password']],
+                        ['label' => '第三方帐号绑定', 'url' => ['/openid/index']],
                     ]
                 ]) ?>
             </div>
