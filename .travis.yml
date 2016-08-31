@@ -5,10 +5,10 @@ install:
   - git clone https://github.com/yiizh/yiizh.com.git ~/yiizh.com
 
 before_script:
-  - if [ "$TRAVIS_TAG" != "" ]; then
+  - if [ "$TRAVIS_TAG" != "" ] then
         image_version = "$TRAVIS_TAG"
         push_image = 'yes'
-    elif [ "$TRAVIS_BRANCH" == "master" ] ; then
+    elif [ "$TRAVIS_BRANCH" = "master" ] then
         image_version = "latest"
         push_image = 'yes'
     else
@@ -22,9 +22,9 @@ after_script:
   - docker images
 
 after_success:
-  - if [ "$push_image" == "yes" ]; then
-    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push yiizh/yiizh.com:$image_version;
+  - if [ "$push_image" = "yes" ] then
+        docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+        docker push yiizh/yiizh.com:$image_version;
     fi
 
 # vim:set et ts=2 sw=2:
