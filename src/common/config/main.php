@@ -20,9 +20,9 @@ return [
         ],
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=yiizh_com',
-            'username' => 'root',
-            'password' => 'root',
+            'dsn' => 'mysql:host=' . getenv('MYSQL_HOST') . ';dbname=' . getenv('MYSQL_DB'),
+            'username' => getenv('MYSQL_USER'),
+            'password' => getenv('MYSQL_PASS'),
             'tablePrefix' => 'tbl_',
             'charset' => 'utf8',
         ],
@@ -39,8 +39,8 @@ return [
                 'weibo' => [
                     'class' => Weibo::className(),
                     'title' => '使用微博登录',
-                    'clientId' => '3002791975',
-                    'clientSecret' => '55884368bec57b03ac613e94d4ad1dbf',
+                    'clientId' => getenv('WEIBO_CLIENT_ID'),
+                    'clientSecret' => getenv('WEIBO_CLIENT_SECRET'),
                 ],
             ],
         ]
