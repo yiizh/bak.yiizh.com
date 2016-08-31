@@ -6,7 +6,7 @@ COPY . /app
 
 RUN cd /app && \
     composer config -g repo.packagist composer https://packagist.phpcomposer.com && \
-    composer global require "fxp/composer-asset-plugin:~1.1.1" \
+    composer global require "fxp/composer-asset-plugin:~1.1.1" && \
     composer install -vvv --prefer-dist
 
 RUN chmod -R /app/src/frontend/runtime \
