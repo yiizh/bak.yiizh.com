@@ -18,10 +18,10 @@ class Alert extends \yii\bootstrap\Widget
      * - $value is the bootstrap alert type (i.e. danger, success, info, warning)
      */
     public $alertTypes = [
-        'error'   => 'alert-danger',
-        'danger'  => 'alert-danger',
+        'error' => 'alert-danger',
+        'danger' => 'alert-danger',
         'success' => 'alert-success',
-        'info'    => 'alert-info',
+        'info' => 'alert-info',
         'warning' => 'alert-warning'
     ];
     /**
@@ -40,7 +40,6 @@ class Alert extends \yii\bootstrap\Widget
 
         foreach ($flashes as $type => $data) {
             if (isset($this->alertTypes[$type])) {
-                $data = (array) $data;
                 foreach ($data as $i => $message) {
                     /* initialize css class for each alert box */
                     $this->options['class'] = $this->alertTypes[$type] . $appendCss;
@@ -66,6 +65,9 @@ class Alert extends \yii\bootstrap\Widget
      */
     public static function set($type, $message)
     {
-        \Yii::$app->session->setFlash($type, $message);
+        $session = Yii::$app->session;
+        $messages = $session->getFlash($type, []);
+        $messages[] = $message;
+        \Yii::$app->session->setFlash($type, $messages);
     }
 }
