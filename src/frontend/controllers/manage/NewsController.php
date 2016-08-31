@@ -53,11 +53,14 @@ class NewsController extends FrontendController
     public function actionCreate()
     {
         $model = new News([
-            'status'=>News::STATUS_PUBLISHED
+            'status' => News::STATUS_PUBLISHED
         ]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['/news/view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->userId = Yii::$app->user->id;
+            if ($model->save(false)) {
+                return $this->redirect(['/news/view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -77,7 +80,7 @@ class NewsController extends FrontendController
         $model->setScenario(News::SCENARIO_UPDATE);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Alert::set('success','保存成功');
+            Alert::set('success', '保存成功');
             return $this->refresh();
         } else {
             return $this->render('update', [
