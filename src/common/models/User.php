@@ -29,7 +29,7 @@ class User extends BaseUser implements IdentityInterface
     {
         $scenarios = parent::scenarios();
 
-        $scenarios[self::SCENARIO_PROFILE] = ['name', 'updatedAt'];
+        $scenarios[self::SCENARIO_PROFILE] = ['avatar', 'name', 'updatedAt'];
         $scenarios[self::SCENARIO_PASSWORD] = ['passwordHash'];
 
         return $scenarios;
@@ -200,7 +200,7 @@ class User extends BaseUser implements IdentityInterface
         if ($this->avatar == null) {
             return Url::to('@web/static/images/default-avatar.jpg');
         } else {
-            return Url::to('@web/uploads/' . $this->avatar);
+            return Url::to('@web' . $this->avatar);
         }
     }
 }

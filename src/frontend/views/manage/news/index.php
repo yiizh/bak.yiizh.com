@@ -34,8 +34,7 @@ $this->title = '新闻管理 ';
         'layout' => '{items}{pager}',
         'itemOptions' => ['class' => 'item'],
         'itemView' => '_view',
-        'viewParams' => [
-        ],
+        'separator' => '<hr />',
     ]) ?>
 
     <?php Panel::end() ?>
