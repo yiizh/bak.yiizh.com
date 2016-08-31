@@ -23,13 +23,7 @@ $formatter = Yii::$app->formatter;
 <div class="row news-item">
     <div class="col-xs-2 text-right">
         <p>
-        <?= Gravatar::widget([
-            'email' => $user->email,
-            'options' => [
-                'alt' => $user->name,
-            ],
-            'size' => 60
-        ]) ?>
+            <img src="<?= $user->getAvatarUrl() ?>" class="img-thumbnail">
         </p>
     </div>
     <div class="col-xs-10">

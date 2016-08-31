@@ -22,8 +22,9 @@ use Yii;
  * @property string $registerDatetime
  * @property integer $createdAt
  * @property integer $updatedAt
+ * @property string $avatar
  */
-class BaseUser extends BaseActiveRecord
+class BaseUser extends \common\models\BaseActiveRecord
 {
     /**
      * @inheritdoc
@@ -44,7 +45,7 @@ class BaseUser extends BaseActiveRecord
             [['registerDatetime'], 'safe'],
             [['name'], 'string', 'max' => 50],
             [['email', 'authKey'], 'string', 'max' => 100],
-            [['passwordHash', 'passwordResetToken'], 'string', 'max' => 200],
+            [['passwordHash', 'passwordResetToken', 'avatar'], 'string', 'max' => 200],
             [['email'], 'unique'],
             [['passwordResetToken'], 'unique'],
         ];
@@ -66,6 +67,7 @@ class BaseUser extends BaseActiveRecord
             'registerDatetime' => '注册时间',
             'createdAt' => '创建时间',
             'updatedAt' => '更新时间',
+            'avatar' => '头像地址',
         ];
     }
 }

@@ -28,12 +28,28 @@ class FrontendController extends Controller
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function beforeAction($action)
+    {
+        if (in_array($action->id, $this->trustActions())) {
+            $this->enableCsrfValidation = false;
+        }
+        return parent::beforeAction($action);
+    }
+
     public function verbs()
     {
         return [];
     }
 
     public function accessRules()
+    {
+        return [];
+    }
+
+    public function trustActions()
     {
         return [];
     }
