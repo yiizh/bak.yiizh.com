@@ -1,0 +1,19 @@
+language: bash
+services: docker
+
+install:
+  - git clone https://github.com/yiizh/yiizh.com.git ~/yiizh.com
+
+script:
+  - docker build -t "yiizh/yiizh.com:latest" .
+
+after_script:
+  - docker images
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push yiizh/yiizh.com;
+    fi
+
+# vim:set et ts=2 sw=2:
